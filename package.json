@@ -1,0 +1,27 @@
+{
+  "name": "express-template",
+  "version": "1.0.0",
+  "description": "ExpressJS Bootstrap",
+  "main": "index.js",
+  "repository": "https://github.com/aides/express-template",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mikhail Kuleshov",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "compression": "^1.7.0",
+    "config": "^1.26.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "express-pino-logger": "^2.0.0",
+    "glob": "^7.1.2",
+    "lodash": "^4.17.4",
+    "morgan": "^1.8.2",
+    "shortid": "^2.2.8",
+    "superagent": "^3.6.0",
+    "uuid": "^3.1.0"
+  }
+}
