@@ -1,7 +1,5 @@
-const uuid = require('uuid/v4');
-const shortid = require('shortid');
-const superagent = require('superagent');
 const logger = require('../logger');
+const cacheService = require('../serviceLoader')('CacheService');
 
 class SimpleAction {
   get route() {
@@ -12,12 +10,18 @@ class SimpleAction {
   }
 
   async do(req) {
-    const response = await superagent.get('https://jsonplaceholder.typicode.com/posts/1');
+    const value = cacheService.getValue(() => {
+      let x = 0;
+
+      for (let i = 0; i < 10000000; i++) {
+        x += Math.sin(i);
+      }
+
+      return x;
+    });
 
     return {
-      id: uuid(),
-      shortId: shortid.generate(),
-      data: response.body,
+      myValue: value,
     };
   }
 }

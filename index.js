@@ -7,10 +7,20 @@ const morgan = require('morgan');
 const cors = require('cors');
 const compression = require('compression');
 
+// should be above router as actions are main consumers of services
+const services = require('./serviceLoader');
 const router = require('./router');
+
 const logger = require('./logger');
+const scheduledTasks = require('./scheduler');
+const counter = require('./counter');
+
+// TODO: Do it via await with immediate function call
+require('./subscriber')();
 
 const app = express();
+
+app.use(counter.count);
 
 app.disable('x-powered-by');
 app.use(cors());

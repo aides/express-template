@@ -1,3 +1,5 @@
+const counter = require('../counter');
+
 class GetStatusAction {
   get route() {
     return {
@@ -9,6 +11,7 @@ class GetStatusAction {
   async do(req) {
     return {
       uptime: process.uptime(),
+      requests: counter.get(),
     };
   }
 }
